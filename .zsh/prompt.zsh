@@ -8,13 +8,12 @@ setopt COMPLETE_ALIASES
 
 autoload -Uz promptinit
 promptinit
-#prompt fade blue
 
 autoload colors && colors
 
 function _prompt_char() {
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    echo "%{%F{blue}%}±%{%f%k%b%} "
+    echo "%{%F{075}%}±%{%f%k%b%} "
   else
     echo ''
   fi
@@ -29,5 +28,5 @@ PROMPT='%{%f%k%b%}
 %{%K{blue}%B%F{white}%} %n%{%B%F{white}%}@%{%B%F{white}%}%m%{%B%F{white}%} %{%f%k%b%} %~%  %D{%f/%m/%y}|%*%B%F{white}%}$(git_prompt_info)%E%{%f%k%b%}
 %{%K{0}%}$(_prompt_char)$%{%f%k%b%} '
 
-RPROMPT='!%{%B%F{blue}%}%!%{%f%k%b%}'
+RPROMPT='!%{%B%F{075}%}%!%{%f%k%b%}'
 

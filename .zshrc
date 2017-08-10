@@ -27,6 +27,11 @@ else
     alias ll='ls -laG'
 fi
 
+# Easy Navigation
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
 # Git commands
 alias branch='git symbolic-ref --short HEAD'
 

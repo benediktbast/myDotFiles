@@ -1,3 +1,5 @@
+# Autor: Benedikt Bast
+# https://github.com/benediktbast
 #
 # ~/.bashrc
 #
@@ -17,6 +19,10 @@ else
     alias ls='ls -G'
     alias ll='ls -laG'
 fi
+
+# Git commands
+alias branch='git symbolic-ref --short HEAD'
+
 #Set prompt
 PS1='\u@\h \W\$ '
 

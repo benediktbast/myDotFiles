@@ -1,5 +1,7 @@
+# Autor: Benedikt Bast
+# https://github.com/benediktbast
+#
 # .zshrc
-# Author: Benedikt Bast
 
 # Auto completion
 autoload -Uz compinit promptinit
@@ -24,6 +26,9 @@ else
     alias ls='ls -G'
     alias ll='ls -laG'
 fi
+
+# Git commands
+alias branch='git symbolic-ref --short HEAD'
 
 #Configure Golang
 export GOPATH="$HOME/data/go"

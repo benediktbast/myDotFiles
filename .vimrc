@@ -1,5 +1,6 @@
 " Vim Configuration File
 " Author: Benedikt Bast
+" https://github.com/benediktbast
 " Version 0.3
 
 " UTF8-Encoding

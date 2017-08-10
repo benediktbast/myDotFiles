@@ -8,8 +8,9 @@ setopt COMPLETE_ALIASES
 
 autoload -Uz promptinit
 promptinit
-prompt fade blue
+#prompt fade blue
 
+autoload colors && colors
 
 function _prompt_char() {
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then

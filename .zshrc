@@ -1,24 +1,11 @@
 # .zshrc
 # Author: Benedikt Bast
 
-# Auto completion
-autoload -Uz compinit promptinit
-compinit
-promptinit
-zstyle ':completion:*' menu select # arrow key driven
-setopt COMPLETE_ALIASES
-
-autoload -Uz promptinit
-promptinit
-prompt fade blue
-
-
-#Configure Golang
-export GOPATH="$HOME/data/go"
-export PATH="$PATH:$GOPATH/bin"
-
+# Enabling config modules
 ZSH_CONF_DIR=~/.zsh/
 ZSH_CONF_FILES=(
+  git
+  prompt
   alias
   bindkeys
 )
@@ -30,6 +17,10 @@ do
     source $ZSH_CONF_DIR/$conf_file.zsh;
   fi
 done
+
+#Configure Golang
+export GOPATH="$HOME/data/go"
+export PATH="$PATH:$GOPATH/bin"
 
 #Visual
 export VISUAL="vim"

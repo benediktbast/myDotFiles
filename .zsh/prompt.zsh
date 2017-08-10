@@ -19,14 +19,14 @@ function _prompt_char() {
   fi
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B%F{white}%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{%f%k%b%K{blue}%B%F{white}%}]"
+ZSH_THEME_GIT_PROMPT_PREFIX=" [%{%B%F{Green}%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{%f%k%b%B%F{white}%}]"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{%F{red}%}*%{%f%k%b%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 PROMPT='%{%f%k%b%}
-%{%K{blue}%B%F{white}%}%n%{%B%F{white}%}@%{%B%F{white}%}%m%{%B%F{white}%} %{%b%F{white}%K{blue}%}%~%{%B%F{white}%}$(git_prompt_info)%E%{%f%k%b%}
-%{%K{0}%}$(_prompt_char)%#%{%f%k%b%} '
+%{%K{blue}%B%F{white}%} %n%{%B%F{white}%}@%{%B%F{white}%}%m%{%B%F{white}%} %{%f%k%b%} %~%  %D{%f/%m/%y}|%*%B%F{white}%}$(git_prompt_info)%E%{%f%k%b%}
+%{%K{0}%}$(_prompt_char)$%{%f%k%b%} '
 
 RPROMPT='!%{%B%F{blue}%}%!%{%f%k%b%}'
 

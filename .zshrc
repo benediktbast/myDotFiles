@@ -24,5 +24,3 @@ export PATH="$PATH:$GOPATH/bin"
 
 #Visual
 export VISUAL="vim"
-
-source /usr/share/nvm/init-nvm.sh

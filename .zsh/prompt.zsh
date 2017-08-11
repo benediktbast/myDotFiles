@@ -13,6 +13,7 @@ prompt fade blue
 # 025	DeepSkyBlue4	#005faf		rgb(0,95,175)	hsl(07,100%,34%)
 # 075	SteelBlue1		#5fafff		rgb(95,175,255)	hsl(210,100%,68%)
 # 160	Red3			#d70000		rgb(215,0,0)	hsl(0,100%,42%)
+# 15	White (SYSTEM)	#ffffff	rgb(255,255,255)	hsl(0,0%,100%)
 autoload colors && colors
 
 function _prompt_char() {
@@ -30,7 +31,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 PROMPT='%{%f%k%b%}
 %{%K{025}%B%F{white}%} %n%{%B%F{white}%}@%{%B%F{white}%}%m%{%B%F{white}%} %{%f%k%b%} %~%  %D{%f/%m/%y} %*%B%F{white}%}$(git_prompt_info)%E%{%f%k%b%}
-%{%K{0}%}$(_prompt_char)$%{%f%k%b%} '
+$(_prompt_char)$%{%f%k%b%} '
 
 RPROMPT='!%{%B%F{075}%}%!%{%f%k%b%}'
 

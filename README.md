@@ -5,7 +5,7 @@ My zshell config is split into modules than can be loaded if needed. The pormpt 
 
 ## Terminal Colors
 To Test you terminal color settings run:
-~/.zsh/colortest.zsh
+`~/.zsh/colortest.zsh`
 
 ## You have a good idea?
 Tell me about it, and contribute ;)

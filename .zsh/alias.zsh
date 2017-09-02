@@ -15,6 +15,7 @@ fi
 alias branch='git symbolic-ref --short HEAD'
 
 # Easy Navigation
+alias ~='cd ~'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'

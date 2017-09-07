@@ -4,10 +4,11 @@
 # Enabling config modules
 ZSH_CONF_DIR=~/.zsh/
 ZSH_CONF_FILES=(
-  git
-  prompt
-  alias
-  bindkeys
+	welcome
+	git
+	prompt
+	alias
+	bindkeys
 )
 
 for conf_file in $ZSH_CONF_FILES

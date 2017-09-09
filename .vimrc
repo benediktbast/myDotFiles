@@ -1,77 +1,117 @@
+""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Configuration File
 " Author: Benedikt Bast
 " https://github.com/benediktbast
-" Version 0.3
+" Last Change: 2017/09/09
+""""""""""""""""""""""""""""""""""""""""""""""""
 
-" UTF8-Encoding
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic Settings
+""""""""""""""""""""""""""""""""""""""""""""""""
+set enc=utf-8									" Set ecoding to UTF-8
+set fenc=utf-8									" Set file encoding
+set termencoding=utf-8							" Set terminal encoding
+set nocompatible 								" Fisable vi compatibility¬
 
-" disable vi compatibility
-set nocompatible
 
-" syntax highlighting
-" set terminal color as variable
-let termColors=system('tput colors')
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors
+""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on										" Enable syntax highliting
+let termColors=system('tput colors')			" Set terminal color commmand as variable
 
 "set wombat only if terminal supports 256 colors
-if termColors == 256
-	colorscheme wombat256mod 
-else
+if termColors == 256							" Use a beautiful color scheme if
+	colorscheme wombat256mod 					" If the terminal supports 265 colors
+else											" Else use a fallback scheme
 	colorscheme darkblue
 endif
-syntax on
 
-" further color configuration
-set cursorline
+set cursorline									" Highlight cursor line and set colors
 hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white
-set hlsearch
+set hlsearch									" Gightlight search matches and set colors
 hi Search guibg=yellow
 
-" line numbers
-set relativenumber
-set numberwidth=4
 
-" tabwidth 
-set shiftwidth=4
-set tabstop=4
-set noexpandtab
-set list
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Text formating
+""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=4									" Define tab width as 4 spaces
+set noexpandtab									" Do not expand tabs to spaces
+set smarttab									" Align Tabs
+"set softtabstop=4								" Expand tabs with spaces, if you want
+"set expandtab									" not useful for makefiles ;)
+"set shiftwidth=4
+
+set list										" Display tabs and end of line
 set listchars=tab:▸\ ,eol:¬
-" expand tabs to spaces, using softtabs
-" not very useful vor makefiles :P
-"set softtabstop=4
-"set expandtab
 
-" highlighting for braces
-set showmatch
+set showmatch									" Highlight matching braces
 
-" intelligent comments
-set formatoptions+=r
+set formatoptions+=r							" Recognize code comments
 set comments=sl:/*,mb:\ *,elx:\ */
 
-" set customs highlightings for statusbar
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" User Interface
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+set relativenumber								" Use relative line numbers
+set numberwidth=4								" Allow width of the line number column up to 4 chars
+set scrolloff=6									" Set offset when moving vertically
+set incsearch									" Show search matching while typing
+set ignorecase									" Search case insensitive
+set showcmd										" Show vim command in the last line of screen
+set showmode									" Always show current mode
+set foldcolumn=1
+
+set noerrorbells								" Do not beep
+set novisualbell								" Do not beep
+
+set wildmenu									" Set tab completion for commands or files
+"set wildmode=list:full							" Show list list for tab completion
+set wildignore=*.swp,*.o,*~,					" Ignore some stuff for completion
+if has("win16") || has("win32")
+	set wildignore+=.git\*
+else
+	set wildignore+=*/.git/*,*/.DS_Store
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusbar
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Custom Highlight 1 for filename
 hi User1 ctermbg=red ctermfg=white guibg=red guifg=white
 
-" add more information to status bar
-set statusline=%1*		"switch to highlight 1"
-set statusline+=%F		"full filename
-"set statusline=%t		"tail of the filename
-set statusline+=%*		"switch back to normal statusline highlight
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},		"file encoding
-set statusline+=%{&ff}]		"file format
-set statusline+=%h		"help file flag
-set statusline+=%m		"modified flag
-set statusline+=%r		"read only flag
-set statusline+=%y		"filetype
-set statusline+=[Size:%{FileSize()}]
-set statusline+=%=		"left/right separator
-set statusline+=%c,		"cursor column
-set statusline+=%l/%L	"cursor line/total lines
-set statusline+=\ %P	"percent through file
+set laststatus=2								" always show status line
 
-" filesize function for statusbar
+" add more information to status bar
+set statusline=%1*								" Highlight 1"
+set statusline+=%F								" Full filename
+"set statusline=%t								" Tail of the filename
+set statusline+=%*								" Switch back to normal statusline
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}," File encoding
+set statusline+=%{&ff}]							" File format
+set statusline+=%h								" Help file flag
+set statusline+=%m								" Modified flag
+set statusline+=%r								" Read only flag
+set statusline+=%y								" File type
+set statusline+=[Size:%{FileSize()}]			" File size
+set statusline+=%{GitStatusBar()}				" Git information
+set statusline+=%=								" Left/right separator
+set statusline+=%c,								" Cursor position
+set statusline+=%l/%L							" Cursor line/total lines
+set statusline+=\ %P							" Percent through file
+
+"set ruler 										" No need for the ruler due to the great statusbar
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusbar functions
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Filesize function
 function! FileSize()
 	let bytes = getfsize(expand("%:p"))
 	if bytes <= 0
@@ -84,9 +124,12 @@ function! FileSize()
 	endif
 endfunction
 
-"no need for the roler due to the great statusbar
-"set ruler
+" Git Branch Function
+function! GitBranch()
+	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
 
-set wildmenu
-set showcmd
-set laststatus=2
+function! GitStatusBar()
+	let l:branch = GitBranch()
+	return strlen(l:branch) > 0?' ⎇  '.l:branch.'  ':''
+endfunction

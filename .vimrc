@@ -70,9 +70,9 @@ set wildmenu                                    " Set tab completion for command
 "set wildmode=list:full                         " Show list list for tab completion
 set wildignore=*.swp,*.o,*~,                    " Ignore some stuff for completion
 if has("win16") || has("win32")
-	set wildignore+=.git\*
+    set wildignore+=.git\*
 else
-	set wildignore+=*/.git/*,*/.DS_Store
+    set wildignore+=*/.git/*,*/.DS_Store
 endif
 
 
@@ -111,23 +111,23 @@ set statusline+=\ %P                            " Percent through file
 
 " Filesize function
 function! FileSize()
-	let bytes = getfsize(expand("%:p"))
-	if bytes <= 0
-		return ""
-	endif
-	if bytes < 1024
-		return bytes
-	else
-		return (bytes / 1024) . "K"
-	endif
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+        endif
+        if bytes < 1024
+            return bytes
+    else
+            return (bytes / 1024) . "K"
+    endif
 endfunction
 
 " Git Branch Function
 function! GitBranch()
-	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
 function! GitStatusBar()
-	let l:branch = GitBranch()
-	return strlen(l:branch) > 0?' ⎇  '.l:branch.'  ':''
+    let l:branch = GitBranch()
+    return strlen(l:branch) > 0?' ⎇  '.l:branch.'  ':''
 endfunction

@@ -87,7 +87,7 @@ set laststatus=2                                " always show status line
 
 " add more information to status bar
 set statusline=%1*                              " Highlight 1"
-set statusline+=%F                              " Full filename
+set statusline+=%F\                               " Full filename
 "set statusline=%t                              " Tail of the filename
 set statusline+=%*                              " Switch back to normal statusline
 set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}," File encoding
@@ -127,7 +127,13 @@ function! GitBranch()
     return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
+function! GitDirty()
+    let l:gitStatus = system("git status -s 2>/dev/null")
+    return strlen(l:gitStatus) > 0?' *':''
+endfunction
+
 function! GitStatusBar()
     let l:branch = GitBranch()
-    return strlen(l:branch) > 0?' ⎇  '.l:branch.'  ':''
+    let l:dirty = GitDirty()
+    return strlen(l:branch) > 0?' ⎇  '.l:branch.l:dirty.'  ':''
 endfunction

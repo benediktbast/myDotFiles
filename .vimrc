@@ -85,7 +85,7 @@ hi User1 ctermbg=red ctermfg=white guibg=red guifg=white
 set laststatus=2                                " always show status line
 
 " add more information to status bar
-set statusline=%1*                              " Highlight 1"
+set statusline=%1*                              " Use predefined Highlight 1
 set statusline+=%F\                             " Full filename
 "set statusline=%t                              " Tail of the filename
 set statusline+=%*                              " Switch back to normal statusline
@@ -99,7 +99,7 @@ set statusline+=[Size:%{FileSize()}]            " File size
 set statusline+=%{GitStatusBar()}               " Git information
 set statusline+=%=                              " Left/right separator
 set statusline+=%c,                             " Cursor position
-set statusline+=%l/%L                           " Cursor line/total lines
+set statusline+=%l/%L                           " Cursor line / total lines
 set statusline+=\ %P                            " Percent through file
 
 "set ruler                                      " No need for the ruler due to the great statusbar

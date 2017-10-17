@@ -3,15 +3,15 @@
 	email =mail@domain.com 
 
 [core]
-        #force the line endings of your OS
-        #e.g. autocrlf = input on your Linux/UNIX
-        # and autocrlf = false on your Windows
-        #will keep your unix line endings,
-        #no matter OS you currently use 
+	# force the line endings of your OS
+	# e.g. autocrlf = input on your Linux/UNIX
+	# and autocrlf = false on your Windows
+	# will keep your unix line endings,
+	# no matter OS you currently use 
 	autocrlf = input
 
 [alias]
-  detailed = log --pretty=format:'%C(bold yellow)%ad%Creset | %Cgreen%an <%ae>%Creset%n%C(yellow)%H%n%s%n' --stat --graph --date=iso
+	detailed = log --pretty=format:'%C(bold yellow)%ad%Creset | %Cgreen%an <%ae>%Creset%n%C(yellow)%H%n%s%n' --stat --graph --date=iso
 	timeline = log --graph --format='%C(yellow)%h %C(blue)%an %C(green)%ai %C(reset)%s'	
 [push]
 	default = simple

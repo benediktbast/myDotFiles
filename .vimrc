@@ -2,7 +2,7 @@
 " Vim Configuration File
 " Author: Benedikt Bast
 " https://github.com/benediktbast
-" Last Change: 2017/09/09
+" Last Change: 2017/10/17
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -20,7 +20,6 @@ set nocompatible                                " Fisable vi compatibility¬
 syntax on                                       " Enable syntax highliting
 let termColors=system('tput colors')            " Set terminal color commmand as variable
 
-"set wombat only if terminal supports 256 colors
 if termColors == 256                            " Use a beautiful color scheme if
     colorscheme wombat256mod                    " If the terminal supports 265 colors
 else                                            " Else use a fallback scheme
@@ -36,12 +35,12 @@ hi Search guibg=yellow
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Text formating
 """"""""""""""""""""""""""""""""""""""""""""""""
-"set tabstop=4                                  " Define tab width as 4 spaces
-"set noexpandtab                                " Do not expand tabs to spaces
+set noexpandtab                                 " Use hard tabs
+"set expandtab                                  " No hard tabs
 set smarttab                                    " Align Tabs
-set expandtab                                   " No hard tabs
-set softtabstop=4                               " Expand tabs 4 spaces
-set shiftwidth=4
+set tabstop=4                                   " Define hard tab width as 4 spaces
+set softtabstop=4                               " Expand soft tabs 4 spaces
+set shiftwidth=4                                " Text ident
 
 set list                                        " Display tabs and end of line
 set listchars=tab:▸\ ,eol:¬
@@ -87,10 +86,10 @@ set laststatus=2                                " always show status line
 
 " add more information to status bar
 set statusline=%1*                              " Highlight 1"
-set statusline+=%F\                               " Full filename
+set statusline+=%F\                             " Full filename
 "set statusline=%t                              " Tail of the filename
 set statusline+=%*                              " Switch back to normal statusline
-set statusline+=\ [%{strlen(&fenc)?&fenc:'none'}," File encoding
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},   " File encoding
 set statusline+=%{&ff}]                         " File format
 set statusline+=%h                              " Help file flag
 set statusline+=%m                              " Modified flag

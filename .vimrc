@@ -25,7 +25,7 @@ set cursorline                                  " Highlight cursor line and set 
 if termColors == 256                            " Use a beautiful color scheme if
     colorscheme wombat256mod                    " If the terminal supports 265 colors
 else                                            " Else use a fallback scheme
-    colorscheme blue							" and custom cursor line
+	colorscheme blue							" and custom cursor line
 	hi CursorLine   cterm=NONE ctermbg=white ctermfg=darkblue
 endif
 

@@ -2,7 +2,7 @@
 " Vim Configuration File
 " Author: Benedikt Bast
 " https://github.com/benediktbast
-" Last Change: 2017/10/17
+" Last Change: 2017/10/18
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""

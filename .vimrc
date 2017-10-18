@@ -25,10 +25,9 @@ set cursorline                                  " Highlight cursor line and set 
 if termColors == 256                            " Use a beautiful color scheme if
     colorscheme wombat256mod                    " If the terminal supports 265 colors
 else                                            " Else use a fallback scheme
-	colorscheme blue							" and custom cursor line
+	colorscheme blue			" and custom cursor line
 	hi CursorLine   cterm=NONE ctermbg=white ctermfg=darkblue
 endif
-
 
 set hlsearch                                    " Gightlight search matches and set colors
 hi Search guibg=yellow
@@ -37,12 +36,25 @@ hi Search guibg=yellow
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Text formating
 """"""""""""""""""""""""""""""""""""""""""""""""
-set noexpandtab                                 " Use hard tabs
-"set expandtab                                  " No hard tabs
-set smarttab                                    " Align Tabs
-set tabstop=4                                   " Define hard tab width as 4 spaces
-set softtabstop=4                               " Expand soft tabs 4 spaces
-set shiftwidth=4                                " Text ident
+set smarttab					" Align Tabs
+
+" Define formatting rules for Linux Kernel conventions
+function! LinuxStyle() 
+	set noexpandtab				" Use hard tabs
+	set shiftwidth=8			" Text ident to 8 spaces
+	set tabstop=8				" Define hard tab width as 8 spaces
+endfunction
+:command Linux :call LinuxStyle()		" Command alias
+
+" Define formatting for Java convetions
+function! JavaStyle()
+	set expandtab				" No hard tabs
+	set shiftwidth=4			" Text ident to 4 spaces
+	set softtabstop=4			" Expand soft tabs 4 spaces
+endfunction
+:command Java :call JavaStyle()			" Command alias
+
+call LinuxStyle()				" Default: Linux Style 
 
 set list                                        " Display tabs and end of line
 set listchars=tab:▸\ ,eol:¬

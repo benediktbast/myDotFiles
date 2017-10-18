@@ -20,14 +20,16 @@ set nocompatible                                " Fisable vi compatibility¬
 syntax on                                       " Enable syntax highliting
 let termColors=system('tput colors')            " Set terminal color commmand as variable
 
+set cursorline                                  " Highlight cursor line and set colors
+
 if termColors == 256                            " Use a beautiful color scheme if
     colorscheme wombat256mod                    " If the terminal supports 265 colors
 else                                            " Else use a fallback scheme
-    colorscheme darkblue
+    colorscheme blue							" and custom cursor line
+	hi CursorLine   cterm=NONE ctermbg=white ctermfg=darkblue
 endif
 
-set cursorline                                  " Highlight cursor line and set colors
-hi CursorLine   cterm=NONE ctermbg=darkblue ctermfg=white guibg=darkblue guifg=white
+
 set hlsearch                                    " Gightlight search matches and set colors
 hi Search guibg=yellow
 

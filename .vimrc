@@ -11,13 +11,13 @@
 set enc=utf-8					" Set ecoding to UTF-8
 set fenc=utf-8					" Set file encoding
 set termencoding=utf-8				" Set terminal encoding
-set nocompatible				" Fisable vi compatibility¬
+set nocompatible				" Disable vi compatibility
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 """"""""""""""""""""""""""""""""""""""""""""""""
-syntax on					" Enable syntax highliting
+syntax on					" Enable syntax highlighting
 let termColors=system('tput colors')		" Set terminal color commmand as variable
 
 set cursorline					" Highlight cursor line and set colors

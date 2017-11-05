@@ -34,27 +34,37 @@ hi Search guibg=yellow
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""
-" Text formating
+" Text format functions
 """"""""""""""""""""""""""""""""""""""""""""""""
-set smarttab					" Align Tabs
 
 " Define formatting rules for Linux Kernel conventions
-function! LinuxStyle() 
+function! LinuxTextFormat() 
 	set noexpandtab				" Use hard tabs
 	set shiftwidth=8			" Text ident to 8 spaces
 	set tabstop=8				" Define hard tab width as 8 spaces
 endfunction
-:command Linux :call LinuxStyle()		" Command alias
+:command Linux :call LinuxTextFormat()		" Command alias
 
-" Define formatting for Java convetions
-function! JavaStyle()
+" Define formatting for Java conventions
+function! JavaTextFormat()
 	set expandtab				" No hard tabs
 	set shiftwidth=4			" Text ident to 4 spaces
 	set softtabstop=4			" Expand soft tabs 4 spaces
 endfunction
-:command Java :call JavaStyle()			" Command alias
+:command Java :call JavaTextFormat()		" Command alias
 
-call LinuxStyle()				" Default: Linux Style 
+" Default formatting 
+function! DefaultTextFormat()
+	call LinuxTextFormat()			" Your preferred default Style
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Text formating
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+call DefaultTextFormat()			" Set default style
+
+set smarttab					" Align Tabs
 
 set list					" Display tabs and end of line
 set listchars=tab:▸\ ,eol:¬

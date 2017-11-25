@@ -110,7 +110,7 @@ set laststatus=2				" always show status line
 
 " add more information to status bar
 set statusline=%1*				" Use predefined Highlight 1
-set statusline+=%F\				" Full filename
+set statusline+=%F\ 				" Full filename
 "set statusline=%t				" Tail of the filename
 set statusline+=%*				" Switch back to normal statusline
 set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},   " File encoding
